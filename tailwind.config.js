@@ -4,7 +4,18 @@ module.exports = {
 		"./src/**/*.{html,ts}",
 	],
 	theme: {
-		extend: {},
+		fontFamily: {
+      sans: ['IBM Plex Sans', 'Segoe UI', 'Cantarell', 'sans-serif'],
+			mono: ['Iosevka', 'JetBrains Mono', 'Cascadia Code', 'Ubuntu Mono', 'Roboto Mono', 'Lucida Console', 'Courier', 'monospace']
+    },
+		fontWeight: {
+			bold: '600'
+		}
 	},
-	plugins: [],
+	plugins: [
+		require('@catppuccin/tailwindcss')({
+      // which flavour of colours to use by default, in the `:root`
+      defaultFlavour: 'latte'
+    }),
+	],
 }

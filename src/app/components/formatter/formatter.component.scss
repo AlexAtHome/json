@@ -1,7 +1,4 @@
-@use 'highlight.js/styles/github';
-
 :host {
-	@apply grid grid-flow-row relative w-full;
-	grid-auto-columns: repeat(autofit, minmax(320px, max-content));
+	@apply flex flex-col md:flex-row items-stretch gap-2 sm:gap-4 relative;
 }
 
