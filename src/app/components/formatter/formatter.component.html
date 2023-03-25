@@ -4,10 +4,10 @@
 		id="json-input" [(ngModel)]="input" placeholder="Put your JSON here..."></textarea>
 </div>
 
-<div class="relative w-full md:w-4/12 max-h-full inline-flex flex-col gap-2">
+<div class="relative w-full md:w-8/12 max-h-full inline-flex flex-col gap-2">
 	<div *ngIf="input" class="flex flex-row gap-4">
 		<app-button color="green" (click)="copyOutput()"><i-bs name="clipboard"></i-bs> Copy</app-button>
 	</div>
-	<pre class="font-mono relative w-full md:w-8/12 bg-slate-0 rounded-lg p-2 overflow-scroll max-h-full text-black dark:text-white" [innerText]="input | jsonFormat"></pre>
+	<pre class="font-mono relative w-full bg-slate-0 rounded-lg p-2 overflow-scroll max-h-full text-black dark:text-white" [innerText]="input | jsonFormat"></pre>
 </div>
 
