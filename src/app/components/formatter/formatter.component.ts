@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { JsonFormatPipe } from '@pipes/json-format/json-format.pipe';
 import { HighlightModule } from 'ngx-highlightjs';
 
 @Component({
@@ -8,14 +9,11 @@ import { HighlightModule } from 'ngx-highlightjs';
 	templateUrl: './formatter.component.html',
 	styleUrls: ['./formatter.component.scss'],
 	standalone: true,
-	imports: [CommonModule, FormsModule, HighlightModule],
+	imports: [CommonModule, FormsModule, HighlightModule, JsonFormatPipe],
 })
 export class FormatterComponent {
 	protected input = JSON.stringify({
 		foo: 'bar'
 	})
-
-	get output() {
-		return JSON.parse(this.input)
-	}
 }
+
