@@ -4,3 +4,20 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap');
+
+::-webkit-scrollbar {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	width: 3px;
+	height: 3px;
+	border-radius: 4px;
+	@apply bg-sky h-2 w-2 rounded;
+}
+
+::-webkit-scrollbar-corner,
+::-webkit-scrollbar-button {
+	display: none;
+}
+
