@@ -1,16 +1,7 @@
 @use 'highlight.js/styles/github';
 
 :host {
-	position: relative;
-	width: 100%;
-	display: grid;
-	grid-auto-columns: repeat(auto-fit, minmax(320px, max-content));
-}
-
-.input,
-.output code {
-	display: block;
-	position: relative;
-	font-family: 'Iosevka', 'JetBrains Mono', 'Cascadia Mono', 'Courier New', Courier, monospace;
+	@apply grid grid-flow-row relative w-full;
+	grid-auto-columns: repeat(autofit, minmax(320px, max-content));
 }
 
