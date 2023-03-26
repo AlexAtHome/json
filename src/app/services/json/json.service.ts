@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, distinctUntilChanged, from, map, Observable, switchMap, take } from 'rxjs';
+import { BehaviorSubject, combineLatest, distinctUntilChanged, from, map, Observable, switchMap, take, tap } from 'rxjs';
 import { IndentSize, IndentType } from './json.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -60,6 +60,18 @@ export class JsonService {
 		return this.output$.pipe(
 			take(1),
 			switchMap(output => from(navigator.clipboard.writeText(output)))
+		)
+	}
+
+	downloadOutput(): Observable<Blob> {
+		return this.output$.pipe(
+			map(output => new Blob([output], { type: 'application/json' })),
+			tap(blob => {
+				const a = document.createElement('a')
+				a.href = URL.createObjectURL(blob)
+				a.download = `json-${Date.now()}.json`
+				a.click()
+			})
 		)
 	}
 }

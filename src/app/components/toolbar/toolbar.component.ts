@@ -34,4 +34,8 @@ export class ToolbarComponent {
 	protected copyOutput(): void {
 		this.jsonService.copyOutput().subscribe()
 	}
+
+	protected downloadOutput(): void {
+		this.jsonService.downloadOutput().subscribe()
+	}
 }

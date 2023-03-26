@@ -1,5 +1,9 @@
 <app-button color="green" (click)="copyOutput()">
-	<i-bs name="clipboard"></i-bs> Copy
+	<i-bs name="clipboard" aria-hidden="true"></i-bs> Copy
+</app-button>
+
+<app-button color="blue" (click)="downloadOutput()">
+	<i-bs name="download" aria-hidden="true"></i-bs> Download
 </app-button>
 
 <span class="text-black dark:text-white pl-3 rounded bg-transparent inline-flex gap-1 items-center">
@@ -17,3 +21,4 @@
 		<option *ngFor="let size of indentSizes" [ngValue]="size" [selected]="indentSize === size">{{ size }}</option>
 	</select>
 </span>
+
