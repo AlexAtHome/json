@@ -17,6 +17,8 @@ export class FormatterComponent {
 
 	protected indentSize$ = this.jsonService.indentSize$;
 
+	protected error$ = this.jsonService.error$;
+
 	constructor(private readonly jsonService: JsonService) {}
 
 	protected setRawInput(event: Event): void {

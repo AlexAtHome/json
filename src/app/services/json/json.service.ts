@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatest, from, map, Observable, switchMap, take } from 'rxjs';
+import { BehaviorSubject, combineLatest, distinctUntilChanged, from, map, Observable, switchMap, take } from 'rxjs';
 import { IndentSize, IndentType } from './json.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -9,6 +9,8 @@ export class JsonService {
 	private readonly indentSizeSubject = new BehaviorSubject<IndentSize>(2)
 
 	private readonly indentTypeSubject = new BehaviorSubject<IndentType>('Spaces')
+
+	private readonly errorSubject = new BehaviorSubject<string>('')
 
 	public readonly output$ = combineLatest([
 		this.rawInputSubject,
@@ -20,14 +22,24 @@ export class JsonService {
 
 	public readonly indentSize$ = this.indentSizeSubject.asObservable()
 
+	public readonly error$ = this.errorSubject.pipe(
+		distinctUntilChanged(),
+	);
+
 	private transform(value: string, indent: IndentSize | '\t'): string {
+		if (!value) {
+			return '';
+		}
 		try {
-			return JSON.stringify(
+			const result = JSON.stringify(
 				JSON.parse(value),
 				null,
 				indent
 			);
-		} catch {
+			this.errorSubject.next('')
+			return result
+		} catch (error) {
+			this.errorSubject.next((error as SyntaxError).message)
 			return value;
 		}
 	}

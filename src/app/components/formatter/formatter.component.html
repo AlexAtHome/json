@@ -10,4 +10,5 @@
 	<pre [style.tabSize]="indentSize$ | async"
 		class="font-mono relative w-full bg-slate-0 rounded-lg p-2 overflow-scroll max-h-full text-black dark:text-white"
 		[innerText]="output$ | async"></pre>
+	<div class="absolute w-full bottom-0 text-white bg-red p-2 rounded-lg" *ngIf="error$ | async as error">{{ error }}</div>
 </div>
