@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from '@components/button';
 import { JsonService } from '@services/json';
+import { IndentSize, indentSizes } from '@services/json/json.interface';
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 @Component({
@@ -17,11 +18,19 @@ import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 export class FormatterComponent {
 	protected output$ = this.jsonService.output$;
 
+	protected indentSizes = indentSizes;
+
+	protected indentSize: IndentSize = 2;
+
 	constructor(private readonly jsonService: JsonService) {}
 
 	protected setRawInput(event: Event): void {
 		const target = event.target as HTMLTextAreaElement
 		this.jsonService.setRawInput(target.value)
+	}
+
+	protected setIndentSize(): void {
+		this.jsonService.setIndentSize(this.indentSize)
 	}
 
 	protected copyOutput(): void {

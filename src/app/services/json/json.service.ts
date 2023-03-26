@@ -29,7 +29,7 @@ export class JsonService {
 		}
 	}
 
-	setIndent(value: IndentSize): void {
+	setIndentSize(value: IndentSize): void {
 		this.indentSizeSubject.next(value)
 	}
 
