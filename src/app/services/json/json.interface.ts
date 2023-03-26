@@ -2,3 +2,6 @@ export const indentSizes = [1, 2, 4, 6, 8] as const;
 
 export type IndentSize = typeof indentSizes[number];
 
+export const indentTypes = ['Spaces', 'Tabs'] as const;
+
+export type IndentType = typeof indentTypes[number];

@@ -15,6 +15,8 @@ import { JsonService } from '@services/json';
 export class FormatterComponent {
 	protected output$ = this.jsonService.output$;
 
+	protected indentSize$ = this.jsonService.indentSize$;
+
 	constructor(private readonly jsonService: JsonService) {}
 
 	protected setRawInput(event: Event): void {

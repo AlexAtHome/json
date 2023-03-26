@@ -1,11 +1,13 @@
 <div class="relative w-full md:w-4/12 max-h-full inline-flex flex-col gap-2">
 	<label for="json-input" class="font-sans text-black dark:text-white">Raw object</label>
-	<textarea class="font-mono flex-grow resize-none p-2 bg-slate-50 dark:bg-base text-black dark:text-white rounded-md focus:outline-mauve focus:outline-1 focus:outline-none focus:outline-offset-1"
+	<textarea
+		class="font-mono flex-grow resize-none p-2 bg-slate-50 dark:bg-base text-black dark:text-white rounded-md focus:outline-mauve focus:outline-1 focus:outline-none focus:outline-offset-1"
 		id="json-input" (input)="setRawInput($event)" placeholder="Put your JSON here..."></textarea>
 </div>
 
 <div class="relative w-full md:w-8/12 max-h-full inline-flex flex-col gap-2">
 	<app-toolbar></app-toolbar>
-	<pre class="font-mono relative w-full bg-slate-0 rounded-lg p-2 overflow-scroll max-h-full text-black dark:text-white" [innerText]="output$ | async"></pre>
+	<pre [style.tabSize]="indentSize$ | async"
+		class="font-mono relative w-full bg-slate-0 rounded-lg p-2 overflow-scroll max-h-full text-black dark:text-white"
+		[innerText]="output$ | async"></pre>
 </div>
-
