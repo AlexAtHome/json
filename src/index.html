@@ -5,7 +5,16 @@
   <title>JSON Formatter</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg" href="assets/favicon.svg" id="favicon-link">
+	<script>
+		function toggleFaviconOnColorScheme() {
+			let faviconUrl = "assets/favicon.svg"
+			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.getElementById('favicon-link').href = 'assets/favicon-dark.svg'
+			}
+		}
+		toggleFaviconOnColorScheme()
+	</script>
 </head>
 <body class="latte dark:mocha">
   <app-root></app-root>
