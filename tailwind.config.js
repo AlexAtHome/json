@@ -5,12 +5,9 @@ module.exports = {
 	],
 	theme: {
 		fontFamily: {
-      sans: ['IBM Plex Sans', 'Segoe UI', 'Cantarell', 'sans-serif'],
-			mono: ['Iosevka', 'JetBrains Mono', 'Cascadia Code', 'Ubuntu Mono', 'Roboto Mono', 'Lucida Console', 'Courier', 'monospace']
+      sans: ['Rubik', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Ubuntu', 'Cantarell', 'Comic Sans MS', 'sans-serif'],
+			mono: ['JetBrains Mono', 'Ubuntu Mono', 'Roboto Mono', 'Lucida Console', 'Courier', 'monospace']
     },
-		fontWeight: {
-			bold: '600'
-		}
 	},
 	plugins: [
 		require('@catppuccin/tailwindcss'),
