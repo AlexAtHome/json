@@ -65,6 +65,7 @@ export class JsonService {
 
 	downloadOutput(): Observable<Blob> {
 		return this.output$.pipe(
+			take(1),
 			map(output => new Blob([output], { type: 'application/json' })),
 			tap(blob => {
 				const a = document.createElement('a')
