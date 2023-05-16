@@ -1,9 +1,10 @@
 import { NgForOf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ButtonComponent } from '@components/button';
 import { FormsModule } from '@angular/forms';
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { Indent, IndentSize, IndentType, indentSizes, indentTypes } from '@interfaces/json.interface';
+import { restoreIndent, saveIndent } from '@func/storage';
 
 @Component({
   selector: 'app-toolbar',
@@ -15,7 +16,7 @@ import { Indent, IndentSize, IndentType, indentSizes, indentTypes } from '@inter
 		class: 'flex flex-row gap-4'
 	}
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements OnInit {
 	protected indentSizes = indentSizes;
 	protected indentTypes = indentTypes;
 	protected indentSize: IndentSize = 2;
@@ -25,8 +26,19 @@ export class ToolbarComponent {
 	@Output() copy = new EventEmitter<void>();
 	@Output() indentChange = new EventEmitter<Indent>();
 
+	ngOnInit(): void {
+		const storedSettings = restoreIndent()
+		if (storedSettings) {
+			this.indentSize = storedSettings.size
+			this.indentType = storedSettings.type
+			this.setIndent()
+		}
+	}
+
 	protected setIndent(): void {
-		this.indentChange.emit({ size: this.indentSize, type: this.indentType })
+		const indent = { size: this.indentSize, type: this.indentType }
+		this.indentChange.emit(indent)
+		saveIndent(indent)
 	}
 
 	protected copyOutput(): void {
