@@ -6,19 +6,9 @@
 	<i-bs name="download" aria-hidden="true"></i-bs> Download
 </app-button>
 
-<span class="text-black dark:text-white pl-3 rounded bg-transparent inline-flex gap-1 items-center">
-	<i-bs name="indent"></i-bs>
-	<label for="indent-type" class="sr-only">Indent type</label>
-	<select id="indent-type" class="bg-transparent cursor-pointer md:py-1 md:px-2 py-3 px-6 rounded outline-pink focus:outline-1 focus:outline focus:outline-offset-2" [(ngModel)]="indentType" (change)="setIndent()">
-		<option *ngFor="let type of indentTypes" [ngValue]="type" [selected]="indentType === type">{{ type }}</option>
-	</select>
+<span class="">
 </span>
 
-<span class="text-black dark:text-white pl-3 rounded bg-transparent inline-flex gap-1 items-center">
-	<i-bs name="text-indent-left"></i-bs>
-	<label for="indent-size" class="sr-only">Indent size</label>
-	<select id="indent-size" class="bg-transparent cursor-pointer md:py-1 md:px-2 py-3 px-6 rounded outline-pink focus:outline-1 focus:outline focus:outline-offset-2" [(ngModel)]="indentSize" (change)="setIndent()">
-		<option *ngFor="let size of indentSizes" [ngValue]="size" [selected]="indentSize === size">{{ size }}</option>
-	</select>
-</span>
+<app-select id="indent-type" icon="indent" [list]="$any(indentTypes)" [(ngModel)]="indentType" (change)="setIndent()"></app-select>
+<app-select id="indent-size" icon="text-indent-left" [list]="$any(indentSizes)" [(ngModel)]="indentSize" (change)="setIndent()"></app-select>
 
