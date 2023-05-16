@@ -7,7 +7,7 @@ import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
   templateUrl: './header.component.html',
 	imports: [NgxBootstrapIconsModule],
 	host: {
-		class: 'flex relative p-2 sm:p-4 items-center justify-between'
+		class: 'flex relative p-4 items-center justify-between'
 	}
 })
 export class HeaderComponent {

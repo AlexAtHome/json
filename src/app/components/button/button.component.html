@@ -10,6 +10,6 @@
 	[class.focus:outline-sky]="color === 'blue'"
 	[class.bg-green]="color === 'green'"
 	[class.focus:outline-green]="color === 'green'"
-	class="inline-flex p-1 pr-3 pl-3 rounded text-white dark:text-black justify-center items-center gap-2 text-sm focus:outline-1 focus:outline focus:outline-offset-2"
+	class="inline-flex md:py-1 md:px-3 py-3 px-6 rounded text-white dark:text-black justify-center items-center gap-2 text-sm focus:outline-1 focus:outline focus:outline-offset-2"
 	(click)="click.emit($event)"
 	><ng-content></ng-content></button>

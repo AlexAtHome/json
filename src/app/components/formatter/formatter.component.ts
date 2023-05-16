@@ -13,7 +13,7 @@ import { Indent, IndentSize, IndentType } from '@interfaces/json.interface';
 	standalone: true,
 	imports: [NgIf, ToolbarComponent],
 	host: {
-		class: 'flex flex-col flex-grow gap-2 sm:gap-4 relative w-full md:w-8/12 max-h-full p-2 sm:p-4'
+		class: 'flex flex-col flex-grow gap-2 sm:gap-4 relative w-full md:w-8/12 max-h-full p-4'
 	}
 })
 export class FormatterComponent {
