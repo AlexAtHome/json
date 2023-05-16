@@ -30,14 +30,14 @@ export class ToolbarComponent implements OnInit {
 	ngOnInit(): void {
 		const storedSettings = restoreIndent()
 		if (storedSettings) {
-			this.indentSize = storedSettings.size
+			this.indentSize = +storedSettings.size as IndentSize
 			this.indentType = storedSettings.type
 			this.setIndent()
 		}
 	}
 
 	protected setIndent(): void {
-		const indent = { size: this.indentSize, type: this.indentType }
+		const indent = { size: +this.indentSize as IndentSize, type: this.indentType }
 		this.indentChange.emit(indent)
 		saveIndent(indent)
 	}
