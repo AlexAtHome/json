@@ -5,12 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { Indent, IndentSize, IndentType, indentSizes, indentTypes } from '@interfaces/json.interface';
 import { restoreIndent, saveIndent } from '@func/storage';
+import { SelectComponent } from '@components/select';
 
 @Component({
   selector: 'app-toolbar',
   standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgForOf, NgxBootstrapIconsModule, ButtonComponent, FormsModule],
+  imports: [NgForOf, NgxBootstrapIconsModule, ButtonComponent, FormsModule, SelectComponent],
   templateUrl: './toolbar.component.html',
 	host: {
 		class: 'flex flex-row flex-wrap gap-4'

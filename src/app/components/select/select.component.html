@@ -1,0 +1,6 @@
+
+<i-bs *ngIf="icon" [name]="icon"></i-bs>
+<label *ngIf="label || srOnlyLabel" for="indent-type" [class.sr-only]="!!srOnlyLabel">{{ label ?? srOnlyLabel }}</label>
+<select [value]="value" [id]="id" class="bg-transparent cursor-pointer md:py-1 md:px-2 py-3 px-6 rounded outline-pink focus:outline-1 focus:outline focus:outline-offset-2" (change)="write($event)">
+	<option *ngFor="let item of list" [value]="item" [selected]="value === item">{{ item }}</option>
+</select>
