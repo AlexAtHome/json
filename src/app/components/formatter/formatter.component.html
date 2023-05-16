@@ -1,15 +1,8 @@
-<div class="relative w-full md:w-4/12 max-h-full inline-flex flex-col gap-2">
-	<label for="json-input" class="font-sans text-black dark:text-white">Raw object</label>
-	<textarea
-		class="font-mono flex-grow resize-none p-2 bg-slate-50 dark:bg-base text-black dark:text-white rounded-md focus:outline-mauve focus:outline-1 focus:outline-none focus:outline-offset-1"
-		id="json-input" (input)="transform($event)" placeholder="Put your JSON here..."></textarea>
-</div>
-
-<div class="relative w-full md:w-8/12 max-h-full inline-flex flex-col gap-2">
-	<app-toolbar (copy)="copy()" (download)="download()" (indentChange)="setIndent($event)"></app-toolbar>
+<app-toolbar (copy)="copy()" (download)="download()" (indentChange)="setIndent($event)"></app-toolbar>
+<div class="relative w-full h-full">
 	<pre [style.tabSize]="indentSize()"
-		class="font-mono relative w-full bg-slate-0 rounded-lg p-2 overflow-scroll max-h-full text-black dark:text-white"
-		[innerHTML]="output().data"></pre>
-	<div class="absolute w-full bottom-0 text-white bg-red p-2 rounded-lg" *ngIf="output().error">{{ output().error }}
-	</div>
+		class="font-mono relative w-full h-full bg-slate-0 rounded-lg p-2 overflow-scroll max-h-full text-black dark:text-white focus:outline outline-offset-2 outline-1 outline-mauve empty:outline-red empty:outline-dashed"
+		[innerText]="output().data" contentEditable [tabIndex]="0" (blur)="setInput($event)" (paste)="setInput($event)">
+	</pre>
 </div>
+<div class="absolute w-full bottom-0 text-white bg-red p-2 rounded-lg" *ngIf="output().error">{{ output().error }}</div>

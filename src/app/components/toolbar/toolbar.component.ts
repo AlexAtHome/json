@@ -13,7 +13,7 @@ import { restoreIndent, saveIndent } from '@func/storage';
   imports: [NgForOf, NgxBootstrapIconsModule, ButtonComponent, FormsModule],
   templateUrl: './toolbar.component.html',
 	host: {
-		class: 'flex flex-row gap-4'
+		class: 'flex flex-row flex-wrap gap-4'
 	}
 })
 export class ToolbarComponent implements OnInit {

@@ -12,6 +12,9 @@ import { Indent, IndentSize, IndentType } from '@interfaces/json.interface';
 	templateUrl: './formatter.component.html',
 	standalone: true,
 	imports: [NgIf, ToolbarComponent],
+	host: {
+		class: 'flex flex-col flex-grow gap-2 sm:gap-4 relative w-full md:w-8/12 max-h-full p-2 sm:p-4'
+	}
 })
 export class FormatterComponent {
 	private readonly indentType = signal<IndentType>('Spaces', { equal: isEqual });
@@ -20,11 +23,18 @@ export class FormatterComponent {
 
 	protected readonly input = signal('');
 
-	protected readonly output = computed(() => formatJson(this.input(), this.indentType(), this.indentSize()))
+	protected readonly output = computed(() => formatJson(this.input().trim(), this.indentType(), this.indentSize()))
 
-	protected transform(event: Event): void {
-		const target = event.target as HTMLTextAreaElement
-		this.input.set(target.value)
+	protected setInput(event: Event): void {
+		if (event instanceof ClipboardEvent) {
+			const text = event.clipboardData?.getData('text/plain') ?? ''
+			this.input.set(text)
+			event.preventDefault()
+			event.stopImmediatePropagation()
+		} else {
+			const target = event.target as HTMLElement;
+			this.input.set(target.innerText)
+		}
 	}
 
 	protected setIndent({ size, type }: Indent): void {
