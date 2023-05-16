@@ -1,7 +1,0 @@
-:host {
-	@apply flex flex-col h-screen bg-gradient-to-br from-base to-crust;
-}
-
-.formatter {
-	height: calc(100vh - 80px - 64px);
-}

@@ -12,9 +12,6 @@ import { Indent, IndentSize, IndentType } from '@interfaces/json.interface';
 	templateUrl: './formatter.component.html',
 	standalone: true,
 	imports: [NgIf, ToolbarComponent],
-	host: {
-		class: 'flex flex-col md:flex-row items-stretch gap-2 sm:gap-4 relative'
-	}
 })
 export class FormatterComponent {
 	private readonly indentType = signal<IndentType>('Spaces', { equal: isEqual });
