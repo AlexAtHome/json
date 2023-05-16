@@ -1,29 +1,46 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Component, computed, signal } from '@angular/core';
 import { ToolbarComponent } from '@components/toolbar';
-import { JsonService } from '@services/json';
+import copy from '@func/copy';
+import download from '@func/download';
+import { formatJson } from '@func/format-json';
+import { isEqual } from '@func/is-equal';
+import { Indent, IndentSize, IndentType } from '@interfaces/json.interface';
 
 @Component({
 	selector: 'app-formatter',
 	templateUrl: './formatter.component.html',
 	standalone: true,
-	imports: [CommonModule, ToolbarComponent],
+	imports: [NgIf, ToolbarComponent],
 	host: {
 		class: 'flex flex-col md:flex-row items-stretch gap-2 sm:gap-4 relative'
 	}
 })
 export class FormatterComponent {
-	protected output$ = this.jsonService.output$;
+	private readonly indentType = signal<IndentType>('Spaces', { equal: isEqual });
 
-	protected indentSize$ = this.jsonService.indentSize$;
+	protected readonly indentSize = signal<IndentSize>(2, { equal: isEqual });
 
-	protected error$ = this.jsonService.error$;
+	protected readonly input = signal('');
 
-	constructor(private readonly jsonService: JsonService) {}
+	protected readonly output = computed(() => formatJson(this.input(), this.indentType(), this.indentSize()))
 
-	protected setRawInput(event: Event): void {
+	protected transform(event: Event): void {
 		const target = event.target as HTMLTextAreaElement
-		this.jsonService.setRawInput(target.value)
+		this.input.set(target.value)
+	}
+
+	protected setIndent({ size, type }: Indent): void {
+		this.indentSize.set(size)
+		this.indentType.set(type)
+	}
+
+	protected copy(): void {
+		copy(this.output().data)
+	}
+
+	protected download(): void {
+		download(this.output().data)
 	}
 }
 

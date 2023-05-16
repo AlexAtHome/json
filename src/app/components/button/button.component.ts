@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgClass],
   templateUrl: './button.component.html',
 	host: {
 		class: 'contents'

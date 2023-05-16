@@ -5,3 +5,8 @@ export type IndentSize = typeof indentSizes[number];
 export const indentTypes = ['Spaces', 'Tabs'] as const;
 
 export type IndentType = typeof indentTypes[number];
+
+export interface Indent {
+	size: IndentSize;
+	type: IndentType;
+}

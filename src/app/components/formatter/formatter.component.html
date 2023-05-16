@@ -2,13 +2,14 @@
 	<label for="json-input" class="font-sans text-black dark:text-white">Raw object</label>
 	<textarea
 		class="font-mono flex-grow resize-none p-2 bg-slate-50 dark:bg-base text-black dark:text-white rounded-md focus:outline-mauve focus:outline-1 focus:outline-none focus:outline-offset-1"
-		id="json-input" (input)="setRawInput($event)" placeholder="Put your JSON here..."></textarea>
+		id="json-input" (input)="transform($event)" placeholder="Put your JSON here..."></textarea>
 </div>
 
 <div class="relative w-full md:w-8/12 max-h-full inline-flex flex-col gap-2">
-	<app-toolbar></app-toolbar>
-	<pre [style.tabSize]="indentSize$ | async"
+	<app-toolbar (copy)="copy()" (download)="download()" (indentChange)="setIndent($event)"></app-toolbar>
+	<pre [style.tabSize]="indentSize()"
 		class="font-mono relative w-full bg-slate-0 rounded-lg p-2 overflow-scroll max-h-full text-black dark:text-white"
-		[innerText]="output$ | async"></pre>
-	<div class="absolute w-full bottom-0 text-white bg-red p-2 rounded-lg" *ngIf="error$ | async as error">{{ error }}</div>
+		[innerHTML]="output().data"></pre>
+	<div class="absolute w-full bottom-0 text-white bg-red p-2 rounded-lg" *ngIf="output().error">{{ output().error }}
+	</div>
 </div>

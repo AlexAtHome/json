@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ToolbarComponent } from './toolbar.component';
+import { NgxBootstrapIconsModule, clipboard, download, indent, textIndentLeft } from 'ngx-bootstrap-icons';
+import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from '@components/button';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -8,7 +11,7 @@ describe('ToolbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ ToolbarComponent ]
+      imports: [ToolbarComponent,NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, download }) , ButtonComponent, FormsModule],
     })
     .compileComponents();
 
