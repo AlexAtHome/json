@@ -12,4 +12,5 @@ import { HeaderComponent } from '@components/header';
 	}
 })
 export class AppComponent {
+	protected readonly currentYear = new Date().getFullYear();
 }
