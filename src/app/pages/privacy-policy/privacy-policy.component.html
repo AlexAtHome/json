@@ -1,8 +1,6 @@
-<header>
-	<h1 class="font-sans font-bold text-lg sm:text-4xl from-pink to-mauve bg-gradient-to-r bg-clip-text text-transparent">
-		Privacy policy</h1>
-	<span>Last updated: <time>{{ lastUpdated | date: 'longDate' }}</time></span>
-</header>
+<h1 id="privacy-policy" class="font-sans font-bold text-lg sm:text-4xl from-pink to-mauve bg-gradient-to-r bg-clip-text text-transparent">
+	Privacy policy</h1>
+<span>Last updated: <time [dateTime]="lastUpdated | date:'yyyy-MM-dd'">{{ lastUpdated | date: 'longDate' }}</time></span>
 
 <div class="flex flex-col gap-3">
 	<p>This page describes how and why do I might collect, store, use and/or share (<em>process</em>) your information
@@ -45,7 +43,9 @@
 		<li>Your car's license plate</li>
 		<li>Your car's VIN number</li>
 		<li>Credit card credentials (number, card holder name, expiration date, CVV-code)</li>
-		<li>Your Xbox tag</li>
+		<li>Credit score</li>
+		<li>Crime records</li>
+		<li>Xbox tag</li>
 		<li>Your favorite quarterback</li>
 		<li>Your favorite Family Guy cutaway</li>
 	</ul>

@@ -10,7 +10,8 @@ import { IconName, NgxBootstrapIconsModule } from "ngx-bootstrap-icons";
 	imports: [NgIf, NgForOf, NgxBootstrapIconsModule],
 	standalone: true,
 	host: {
-		class: 'text-black dark:text-white pl-3 rounded bg-transparent inline-flex gap-1 items-center'
+		class: 'text-black dark:text-white pl-3 rounded bg-transparent inline-flex gap-1 items-center',
+		role: 'presentation'
 	},
 	providers: [
 		{

@@ -8,7 +8,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './privacy-policy.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 	host: {
-		class: 'p-4 flex-grow max-w-3xl gap-4 flex flex-col text-lg'
+		class: 'p-4 flex-grow max-w-3xl gap-4 flex flex-col text-lg',
+		role: 'article',
+		ariaLabelledBy: 'privacy-policy'
 	}
 })
 export default class PrivacyPolicyComponent {
