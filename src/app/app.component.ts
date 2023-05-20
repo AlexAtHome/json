@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormatterComponent } from '@components/formatter';
+import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '@components/header';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: true,
-  imports: [HeaderComponent, FormatterComponent],
+  imports: [HeaderComponent, RouterOutlet],
 	host: {
 		class: 'flex flex-col h-screen'
 	}
