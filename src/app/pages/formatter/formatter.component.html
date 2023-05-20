@@ -1,7 +1,7 @@
 <app-toolbar (copy)="copy()" (download)="download()" (indentChange)="setIndent($event)"></app-toolbar>
 <div class="relative w-full h-full">
 	<pre [style.tabSize]="indentSize()"
-		class="font-mono relative w-full min-h-full rounded-lg p-2 overflow-auto text-black dark:text-white focus:outline outline-offset-2 outline-1 outline-mauve empty:outline-red empty:outline-dashed"
+		class="font-mono relative w-full min-h-full rounded-lg p-2 overflow-auto focus:outline outline-offset-2 outline-1 outline-mauve empty:outline-red empty:outline-dashed"
 		[innerText]="output().data" contentEditable [tabIndex]="0" (blur)="setInput($event)" (paste)="setInput($event)">
 	</pre>
 </div>
