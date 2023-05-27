@@ -63,9 +63,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-					"options": {
-						"hmr": true
-					},
+          "options": {
+            "hmr": true
+          },
           "configurations": {
             "production": {
               "browserTarget": "json:build:production"
@@ -100,11 +100,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
