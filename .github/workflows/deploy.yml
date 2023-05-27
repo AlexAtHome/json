@@ -1,26 +1,25 @@
 name: website
 
-on: push
+on:
+  push:
+    tags:
+      - 1.*.*
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v3
-      -
-        name: Use Node.js 18
+      - name: Use Node.js 18
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      -
-        name: Build
+      - name: Build
         run: |
           npm install
           npm run build:gh-pages
-      -
-        name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v3
         with:
@@ -28,4 +27,3 @@ jobs:
           build_dir: dist/json
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
-
