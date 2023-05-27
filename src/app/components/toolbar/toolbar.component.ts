@@ -1,31 +1,29 @@
-import { NgForOf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ButtonComponent } from '@components/button';
-import { FormsModule } from '@angular/forms';
-import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
-import { Indent, IndentSize, IndentType, indentSizes, indentTypes } from '@interfaces/json.interface';
-import { restoreIndent, saveIndent } from '@func/storage';
-import { SelectComponent } from '@components/select';
+import { NgForOf } from '@angular/common'
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, OnInit, Output } from '@angular/core'
+import { ButtonComponent } from '@components/button'
+import { FormsModule } from '@angular/forms'
+import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons'
+import { Indent, IndentSize, IndentType, indentSizes, indentTypes } from '@interfaces/json.interface'
+import { restoreIndent, saveIndent } from '@func/storage'
+import { SelectComponent } from '@components/select'
 
 @Component({
-  selector: 'app-toolbar',
-  standalone: true,
+	selector: 'app-toolbar',
+	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgForOf, NgxBootstrapIconsModule, ButtonComponent, FormsModule, SelectComponent],
-  templateUrl: './toolbar.component.html',
-	host: {
-		class: 'flex flex-row flex-wrap gap-4'
-	}
+	imports: [NgForOf, NgxBootstrapIconsModule, ButtonComponent, FormsModule, SelectComponent],
+	templateUrl: './toolbar.component.html',
 })
 export class ToolbarComponent implements OnInit {
-	protected indentSizes = indentSizes;
-	protected indentTypes = indentTypes;
-	protected indentSize: IndentSize = 2;
-	protected indentType: IndentType = 'Spaces';
+	@HostBinding('class') readonly className = 'flex flex-row flex-wrap gap-4'
+	protected indentSizes = indentSizes
+	protected indentTypes = indentTypes
+	protected indentSize: IndentSize = 2
+	protected indentType: IndentType = 'Spaces'
 
-	@Output() download = new EventEmitter<void>();
-	@Output() copy = new EventEmitter<void>();
-	@Output() indentChange = new EventEmitter<Indent>();
+	@Output() download = new EventEmitter<void>()
+	@Output() copy = new EventEmitter<void>()
+	@Output() indentChange = new EventEmitter<Indent>()
 
 	ngOnInit(): void {
 		const storedSettings = restoreIndent()
