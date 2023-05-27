@@ -3,13 +3,18 @@
 	[disabled]="disabled"
 	[ngClass]="{
 		'hover:bg-sky/80': color === 'blue',
-		'hover:bg-green/80': color === 'green'
+		'hover:bg-green/80': color === 'green',
+		'hover:bg-red/80': color === 'red',
 	}"
 	[class.bg-gray-500]="disabled"
 	[class.bg-sky]="color === 'blue'"
 	[class.focus:outline-sky]="color === 'blue'"
+	[class.bg-red]="color === 'red'"
+	[class.focus:outline-red]="color === 'red'"
 	[class.bg-green]="color === 'green'"
 	[class.focus:outline-green]="color === 'green'"
 	class="inline-flex md:py-1 md:px-3 py-3 px-6 rounded text-white dark:text-black justify-center items-center gap-2 text-sm focus:outline-1 focus:outline focus:outline-offset-2"
 	(click)="click.emit($event)"
-	><ng-content></ng-content></button>
+>
+	<ng-content></ng-content>
+</button>

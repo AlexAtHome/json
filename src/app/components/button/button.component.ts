@@ -12,5 +12,5 @@ export class ButtonComponent {
 	@Input() type: 'button' | 'submit' | 'reset' = 'submit'
 	@Input() disabled = false
 	@Input() click = new EventEmitter<Event>()
-	@Input() color: 'green' | 'blue' = 'blue'
+	@Input() color: 'green' | 'blue' | 'red' = 'blue'
 }
