@@ -24,6 +24,7 @@ export class ToolbarComponent implements OnInit {
 	@Output() downloadClick = new EventEmitter<void>()
 	@Output() copyClick = new EventEmitter<void>()
 	@Output() indentChange = new EventEmitter<Indent>()
+	@Output() resetClick = new EventEmitter<void>()
 
 	ngOnInit(): void {
 		const storedSettings = restoreIndent()
@@ -46,5 +47,9 @@ export class ToolbarComponent implements OnInit {
 
 	protected downloadOutput(): void {
 		this.downloadClick.emit()
+	}
+
+	protected reset(): void {
+		this.resetClick.emit()
 	}
 }

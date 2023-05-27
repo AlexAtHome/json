@@ -1,11 +1,24 @@
-<app-button color="green" (click)="copyOutput()">
-	<i-bs name="clipboard" role="presentation"></i-bs> Copy
-</app-button>
+<app-button color="green" (click)="copyOutput()"> <i-bs name="clipboard" role="presentation"></i-bs> Copy </app-button>
 
 <app-button color="blue" (click)="downloadOutput()">
 	<i-bs name="download" role="presentation"></i-bs> Download
 </app-button>
 
-<app-select id="indent-type" srOnlyLabel="Indent type" icon="indent" [list]="$any(indentTypes)" [(ngModel)]="indentType" (change)="setIndent()"></app-select>
-<app-select id="indent-size" srOnlyLabel="Indent size" icon="text-indent-left" [list]="$any(indentSizes)" [(ngModel)]="indentSize" (change)="setIndent()"></app-select>
+<app-button color="red" (click)="reset()"> <i-bs name="trash" role="presentation"></i-bs> Reset </app-button>
 
+<app-select
+	id="indent-type"
+	srOnlyLabel="Indent type"
+	icon="indent"
+	[list]="$any(indentTypes)"
+	[(ngModel)]="indentType"
+	(change)="setIndent()"
+></app-select>
+<app-select
+	id="indent-size"
+	srOnlyLabel="Indent size"
+	icon="text-indent-left"
+	[list]="$any(indentSizes)"
+	[(ngModel)]="indentSize"
+	(change)="setIndent()"
+></app-select>

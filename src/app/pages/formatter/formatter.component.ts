@@ -49,4 +49,8 @@ export class FormatterComponent {
 	protected download(): void {
 		download(this.output().data)
 	}
+
+	protected reset(): void {
+		this.input.set('')
+	}
 }
