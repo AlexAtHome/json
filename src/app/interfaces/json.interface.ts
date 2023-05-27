@@ -1,12 +1,12 @@
-export const indentSizes = [1, 2, 4, 6, 8] as const;
+export const indentSizes = [1, 2, 4, 6, 8] as const
 
-export type IndentSize = typeof indentSizes[number];
+export type IndentSize = (typeof indentSizes)[number]
 
-export const indentTypes = ['Spaces', 'Tabs'] as const;
+export const indentTypes = ['Spaces', 'Tabs'] as const
 
-export type IndentType = typeof indentTypes[number];
+export type IndentType = (typeof indentTypes)[number]
 
 export interface Indent {
-	size: IndentSize;
-	type: IndentType;
+	size: IndentSize
+	type: IndentType
 }

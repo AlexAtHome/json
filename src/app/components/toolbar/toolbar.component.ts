@@ -21,8 +21,8 @@ export class ToolbarComponent implements OnInit {
 	protected indentSize: IndentSize = 2
 	protected indentType: IndentType = 'Spaces'
 
-	@Output() download = new EventEmitter<void>()
-	@Output() copy = new EventEmitter<void>()
+	@Output() downloadClick = new EventEmitter<void>()
+	@Output() copyClick = new EventEmitter<void>()
 	@Output() indentChange = new EventEmitter<Indent>()
 
 	ngOnInit(): void {
@@ -41,10 +41,10 @@ export class ToolbarComponent implements OnInit {
 	}
 
 	protected copyOutput(): void {
-		this.copy.emit()
+		this.copyClick.emit()
 	}
 
 	protected downloadOutput(): void {
-		this.download.emit()
+		this.downloadClick.emit()
 	}
 }

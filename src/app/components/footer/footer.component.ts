@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core'
+import { RouterLink } from '@angular/router'
 
 @Component({
 	selector: 'app-footer',
@@ -7,10 +7,9 @@ import { RouterLink } from '@angular/router';
 	imports: [RouterLink],
 	templateUrl: './footer.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	host: {
-		class: 'flex justify-between items-center text-black dark:text-white font-sans p-4'
-	}
 })
 export class FooterComponent {
-	protected readonly currentYear = new Date().getFullYear();
+	@HostBinding('class') readonly className =
+		'flex justify-between items-center text-black dark:text-white font-sans p-4'
+	protected readonly currentYear = new Date().getFullYear()
 }

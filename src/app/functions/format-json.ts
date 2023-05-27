@@ -1,8 +1,8 @@
-import { IndentSize, IndentType } from "@interfaces/json.interface";
+import { IndentSize, IndentType } from '@interfaces/json.interface'
 
 export interface FormatJsonOutput {
-	data: string;
-	error?: string;
+	data: string
+	error?: string
 }
 
 export const formatJson = (value: string, indentType: IndentType, indentSize: IndentSize): FormatJsonOutput => {
@@ -14,11 +14,7 @@ export const formatJson = (value: string, indentType: IndentType, indentSize: In
 	}
 
 	try {
-		data = JSON.stringify(
-			JSON.parse(value),
-			null,
-			indentType === 'Tabs' ? '\t' : indentSize
-		);
+		data = JSON.stringify(JSON.parse(value), null, indentType === 'Tabs' ? '\t' : indentSize)
 		error = ''
 	} catch (err) {
 		error = (err as SyntaxError).message
@@ -27,4 +23,3 @@ export const formatJson = (value: string, indentType: IndentType, indentSize: In
 
 	return { data, error }
 }
-

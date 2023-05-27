@@ -1,1 +1,1 @@
-export const isEqual = <Type = number>(a: Type, b: Type): boolean => a === b;
+export const isEqual = <Type = number>(a: Type, b: Type): boolean => a === b

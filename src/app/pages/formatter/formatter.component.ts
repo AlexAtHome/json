@@ -1,28 +1,27 @@
-import { NgIf } from '@angular/common';
-import { Component, computed, signal } from '@angular/core';
-import { ToolbarComponent } from '@components/toolbar';
-import copy from '@func/copy';
-import download from '@func/download';
-import { formatJson } from '@func/format-json';
-import { isEqual } from '@func/is-equal';
-import { Indent, IndentSize, IndentType } from '@interfaces/json.interface';
+import { NgIf } from '@angular/common'
+import { Component, HostBinding, computed, signal } from '@angular/core'
+import { ToolbarComponent } from '@components/toolbar'
+import copy from '@func/copy'
+import download from '@func/download'
+import { formatJson } from '@func/format-json'
+import { isEqual } from '@func/is-equal'
+import { Indent, IndentSize, IndentType } from '@interfaces/json.interface'
 
 @Component({
 	selector: 'app-formatter',
 	templateUrl: './formatter.component.html',
 	standalone: true,
 	imports: [NgIf, ToolbarComponent],
-	host: {
-		class: 'flex flex-col flex-grow gap-2 sm:gap-4 relative w-full md:w-8/12 p-4',
-		role: 'application'
-	}
 })
 export class FormatterComponent {
-	private readonly indentType = signal<IndentType>('Spaces', { equal: isEqual });
+	@HostBinding('class') readonly className = 'flex flex-col flex-grow gap-2 sm:gap-4 relative w-full md:w-8/12 p-4'
+	@HostBinding('attr.role') readonly role = 'application'
 
-	protected readonly indentSize = signal<IndentSize>(2, { equal: isEqual });
+	private readonly indentType = signal<IndentType>('Spaces', { equal: isEqual })
 
-	protected readonly input = signal('');
+	protected readonly indentSize = signal<IndentSize>(2, { equal: isEqual })
+
+	protected readonly input = signal('')
 
 	protected readonly output = computed(() => formatJson(this.input().trim(), this.indentType(), this.indentSize()))
 
@@ -33,7 +32,7 @@ export class FormatterComponent {
 			event.preventDefault()
 			event.stopImmediatePropagation()
 		} else {
-			const target = event.target as HTMLElement;
+			const target = event.target as HTMLElement
 			this.input.set(target.innerText)
 		}
 	}
@@ -51,4 +50,3 @@ export class FormatterComponent {
 		download(this.output().data)
 	}
 }
-
