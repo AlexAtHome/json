@@ -1,3 +1,9 @@
-<span>Alex &copy; {{ currentYear }}</span>
+<div class="mr-auto inline-flex gap-4">
+  <span>Alex &copy; {{ currentYear }}</span>
+  <a class="hover:underline focus:outline focus:outline-offset-2 focus:outline-mauve focus:outline-1 rounded-sm" routerLink="/privacy-policy">Privacy Policy</a>
+</div>
 
-<a class="hover:underline focus:outline focus:outline-offset-2 focus:outline-mauve focus:outline-1 rounded-sm" routerLink="/privacy-policy">Privacy Policy</a>
+<div class="ml-auto inline-flex gap-4">
+  <span *ngIf="isUpdateAvailable()" class="text-green">New version available! <a class="underline underline-offset-4" routerLink="/" (click)="reload()">Reload page</a></span>
+  <span>Version {{ version }}</span>
+</div>
