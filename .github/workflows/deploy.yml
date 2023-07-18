@@ -18,12 +18,13 @@ jobs:
       - name: Build
         run: |
           npm install
-          npm run build:gh-pages
+          npm run build
       - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v3
         with:
           target_branch: gh-pages
           build_dir: dist/json
+          fqdn: json.alexalex.dev
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
