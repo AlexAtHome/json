@@ -9,7 +9,7 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core'
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class PrivacyPolicyComponent {
-	@HostBinding('class') readonly className = 'p-4 flex-grow max-w-3xl gap-4 flex flex-col text-lg'
+	@HostBinding('attr.class') readonly className = 'p-4 flex-grow max-w-3xl gap-4 flex flex-col text-lg'
 	@HostBinding('attr.role') readonly role = 'article'
 	@HostBinding('attr.aria-labelledby') readonly ariaLabelledBy = 'privacy-policy'
 

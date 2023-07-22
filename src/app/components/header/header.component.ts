@@ -9,6 +9,6 @@ import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons'
 	imports: [NgxBootstrapIconsModule, RouterLink],
 })
 export class HeaderComponent {
-	@HostBinding('class') readonly className = 'flex relative p-4 items-center justify-between'
+	@HostBinding('attr.class') readonly className = 'flex relative p-4 items-center justify-between'
 	readonly githubUrl = 'https://github.com/AlexAtHome/json'
 }

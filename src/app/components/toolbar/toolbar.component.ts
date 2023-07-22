@@ -16,10 +16,10 @@ import { SelectComponent } from '@components/select'
 })
 export class ToolbarComponent implements OnInit {
 	@HostBinding('class') readonly className = 'flex flex-row flex-wrap gap-4'
-	protected indentSizes = indentSizes
-	protected indentTypes = indentTypes
-	protected indentSize: IndentSize = 2
-	protected indentType: IndentType = 'Spaces'
+	public indentSizes = indentSizes
+	public indentTypes = indentTypes
+	public indentSize: IndentSize = 2
+	public indentType: IndentType = 'Spaces'
 
 	@Output() downloadClick = new EventEmitter<void>()
 	@Output() copyClick = new EventEmitter<void>()
@@ -35,21 +35,21 @@ export class ToolbarComponent implements OnInit {
 		}
 	}
 
-	protected setIndent(): void {
+	public setIndent(): void {
 		const indent = { size: +this.indentSize as IndentSize, type: this.indentType }
 		this.indentChange.emit(indent)
 		saveIndent(indent)
 	}
 
-	protected copyOutput(): void {
+	public copyOutput(): void {
 		this.copyClick.emit()
 	}
 
-	protected downloadOutput(): void {
+	public downloadOutput(): void {
 		this.downloadClick.emit()
 	}
 
-	protected reset(): void {
+	public reset(): void {
 		this.resetClick.emit()
 	}
 }

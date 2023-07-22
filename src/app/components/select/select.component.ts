@@ -3,6 +3,8 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, forwardRef } fr
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { IconName, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons'
 
+type ValueCallback<T> = (value: T) => void
+
 @Component({
 	selector: 'app-select',
 	templateUrl: './select.component.html',
@@ -30,13 +32,11 @@ export class SelectComponent<T> implements ControlValueAccessor {
 
 	public disabled = false
 
-	protected onChange?: (value: T) => void
-	protected onTouched?: (value: T) => void
+	public onChange?: ValueCallback<T>
+	public onTouched?: ValueCallback<T>
 
 	write(event: Event): void {
 		const target = event.target as HTMLSelectElement
-		console.log(target)
-
 		this.onChange?.(target.value as T)
 	}
 
@@ -44,15 +44,15 @@ export class SelectComponent<T> implements ControlValueAccessor {
 		this.value = value
 	}
 
-	registerOnChange(fn: typeof this.onChange): void {
+	registerOnChange(fn: ValueCallback<T>): void {
 		this.onChange = fn
 	}
 
-	registerOnTouched(fn: typeof this.onChange): void {
+	registerOnTouched(fn: ValueCallback<T>): void {
 		this.onTouched = fn
 	}
 
-	setDisabledState?(isDisabled: boolean): void {
+	setDisabledState(isDisabled: boolean): void {
 		this.disabled = isDisabled
 	}
 }

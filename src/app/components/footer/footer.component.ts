@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router'
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
-	@HostBinding('class') readonly className =
+	@HostBinding('attr.class') readonly className =
 		'flex justify-between items-center text-black dark:text-white font-sans p-4'
 	protected readonly currentYear = new Date().getFullYear()
 }
