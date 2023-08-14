@@ -10,7 +10,7 @@ import {
 	trash,
 	NgxBootstrapIconsModule,
 } from 'ngx-bootstrap-icons'
-import { provideRouter } from '@angular/router'
+import { provideRouter, withComponentInputBinding } from '@angular/router'
 import { routes } from './routes'
 
 bootstrapApplication(AppComponent, {
@@ -19,6 +19,6 @@ bootstrapApplication(AppComponent, {
 			BrowserModule,
 			NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, github, download, trash })
 		),
-		provideRouter(routes),
+		provideRouter(routes, withComponentInputBinding()),
 	],
 }).catch((err) => console.error(err))
