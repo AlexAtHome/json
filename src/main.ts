@@ -9,6 +9,7 @@ import {
 	download,
 	trash,
 	NgxBootstrapIconsModule,
+	wifiOff,
 } from 'ngx-bootstrap-icons'
 import { provideRouter } from '@angular/router'
 import { routes } from './routes'
@@ -18,7 +19,7 @@ bootstrapApplication(AppComponent, {
 	providers: [
 		importProvidersFrom(
 			BrowserModule,
-			NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, github, download, trash })
+			NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, github, download, trash, wifiOff })
 		),
 		provideRouter(routes),
 		provideServiceWorker('ngsw-worker.js', {
