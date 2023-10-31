@@ -11,6 +11,6 @@ xdescribe('download()', () => {
 			},
 		} as unknown as HTMLElement)
 		download('{ "foo": "bar" }')
-		expect(done).toBeTrue()
+		expect(done).toEqual(true)
 	})
 })

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { ToolbarComponent } from './toolbar.component'
-import { NgxBootstrapIconsModule, clipboard, download, indent, textIndentLeft } from 'ngx-bootstrap-icons'
+import { NgxBootstrapIconsModule, clipboard, download, indent, textIndentLeft, trash } from 'ngx-bootstrap-icons'
 import { FormsModule } from '@angular/forms'
 import { ButtonComponent } from '@components/button'
 import { saveIndent } from '@func/storage'
@@ -14,7 +14,7 @@ describe('ToolbarComponent', () => {
 		await TestBed.configureTestingModule({
 			imports: [
 				ToolbarComponent,
-				NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, download }),
+				NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, download, trash }),
 				ButtonComponent,
 				FormsModule,
 			],
@@ -27,6 +27,7 @@ describe('ToolbarComponent', () => {
 
 	afterEach(() => {
 		localStorage.clear()
+		jest.restoreAllMocks()
 	})
 
 	it('should create', () => {
@@ -49,7 +50,7 @@ describe('ToolbarComponent', () => {
 	it('should emit the new indent settings', () => {
 		component.indentType = 'Spaces'
 		component.indentSize = 8
-		spyOn(component.indentChange, 'emit')
+		jest.spyOn(component.indentChange, 'emit')
 		component.setIndent()
 		expect(component.indentChange.emit).toHaveBeenCalledWith({ size: 8, type: 'Spaces' })
 	})
@@ -62,19 +63,19 @@ describe('ToolbarComponent', () => {
 	})
 
 	it('should send the copy signal', () => {
-		spyOn(component.copyClick, 'emit')
+		jest.spyOn(component.copyClick, 'emit')
 		component.copyOutput()
 		expect(component.copyClick.emit).toHaveBeenCalled()
 	})
 
 	it('should send the download signal', () => {
-		spyOn(component.downloadClick, 'emit')
+		jest.spyOn(component.downloadClick, 'emit')
 		component.downloadOutput()
 		expect(component.downloadClick.emit).toHaveBeenCalled()
 	})
 
 	it('should send the reset signal', () => {
-		spyOn(component.resetClick, 'emit')
+		jest.spyOn(component.resetClick, 'emit')
 		component.reset()
 		expect(component.resetClick.emit).toHaveBeenCalled()
 	})
