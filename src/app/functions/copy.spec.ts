@@ -1,8 +1,12 @@
 import copy from './copy'
 
-xdescribe('copy()', () => {
-	it('copies the passed attribute', async () => {
-		await copy('test')
-		expect(await navigator.clipboard.readText()).toEqual('test')
+test('copy() copies the passed attribute', async () => {
+	Object.assign(navigator, {
+		clipboard: {
+			writeText: jest.fn(),
+		},
 	})
+
+	await copy('test')
+	expect(navigator.clipboard.writeText).toHaveBeenCalledWith('test')
 })
