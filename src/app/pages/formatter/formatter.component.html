@@ -13,7 +13,7 @@
 		class="font-mono relative w-full bg-crust min-h-full rounded-lg p-2 overflow-auto outline-pink/50 focus:outline outline-offset-2 outline-1"
 		[class.outline-red]="!!output().error"
 		[class.outline]="!!output().error"
-		[innerText]="output().data"
+		[innerHTML]="output().data"
 		contentEditable
 		[tabIndex]="0"
 		(blur)="setInput($event)"
