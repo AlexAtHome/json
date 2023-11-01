@@ -1,3 +1,13 @@
-<span>Alex &copy; {{ currentYear }}</span>
+<div class="inline-flex gap-4">
+	<span>Alex &copy; {{ currentYear }}</span>
+	<span class="animate-pulse text-green" *ngIf="isUpdateButtonVisible()"
+		>Update available!
+		<button type="button" (click)="activateUpdate()" class="underline underline-offset-4">Activate it now</button></span
+	>
+</div>
 
-<a class="hover:underline focus:outline focus:outline-offset-2 focus:outline-mauve focus:outline-1 rounded-sm" routerLink="/privacy-policy">Privacy Policy</a>
+<a
+	class="underline underline-offset-4 focus:outline focus:outline-offset-2 focus:outline-mauve focus:outline-1 rounded-sm"
+	routerLink="/privacy-policy"
+	>Privacy Policy</a
+>
