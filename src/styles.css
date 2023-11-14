@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&family=JetBrains+Mono&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&family=JetBrains+Mono&display=swap');
 
 ::-webkit-scrollbar {
 	width: 3px;
@@ -20,4 +20,3 @@
 ::-webkit-scrollbar-button {
 	display: none;
 }
-
