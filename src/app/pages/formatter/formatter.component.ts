@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common'
 import { Component, HostBinding, computed, signal } from '@angular/core'
 import { ToolbarComponent } from '@components/toolbar'
 import copy from '@func/copy'
@@ -11,7 +10,7 @@ import { Indent, IndentSize, IndentType } from '@interfaces/json.interface'
 	selector: 'app-formatter',
 	templateUrl: './formatter.component.html',
 	standalone: true,
-	imports: [NgIf, ToolbarComponent],
+	imports: [ToolbarComponent],
 })
 export class FormatterComponent {
 	@HostBinding('class') readonly className = 'flex flex-col flex-grow gap-2 sm:gap-4 relative w-full md:w-8/12 p-4'

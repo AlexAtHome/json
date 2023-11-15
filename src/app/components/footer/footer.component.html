@@ -1,9 +1,11 @@
 <div class="inline-flex gap-4">
 	<span>Alex &copy; {{ currentYear }}</span>
-	<span class="animate-pulse text-green" *ngIf="isUpdateButtonVisible()"
-		>Update available!
-		<button type="button" (click)="activateUpdate()" class="underline underline-offset-4">Activate it now</button></span
-	>
+	@if (isUpdateButtonVisible()) {
+	<span class="animate-pulse text-green">
+		Update available!
+		<button type="button" (click)="activateUpdate()" class="underline underline-offset-4">Activate it now</button>
+	</span>
+	}
 </div>
 
 <a

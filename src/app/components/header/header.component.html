@@ -5,10 +5,12 @@
 	>
 		JSON Formatter</a
 	>
-	<span class="text-red inline-flex gap-4 items-center animate-pulse" role="alert" *ngIf="isOffline">
+	@if (isOffline) {
+	<span class="text-red inline-flex gap-4 items-center animate-pulse" role="alert">
 		<i-bs name="wifi-off" width="2em" height="2em" title="No internet connection!" role="presentation" />
 		No internet connection!
 	</span>
+	}
 </div>
 
 <nav aria-label="Social media">

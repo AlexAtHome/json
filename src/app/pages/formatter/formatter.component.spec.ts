@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { FormatterComponent } from './formatter.component'
 import { ToolbarComponent } from '@components/toolbar'
-import { NgIf } from '@angular/common'
 import { NgxBootstrapIconsModule, clipboard, download, indent, textIndentLeft, trash } from 'ngx-bootstrap-icons'
 
 describe('FormatterComponent', () => {
@@ -14,7 +13,6 @@ describe('FormatterComponent', () => {
 			imports: [
 				FormatterComponent,
 				ToolbarComponent,
-				NgIf,
 				NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, download, trash }),
 			],
 		}).compileComponents()

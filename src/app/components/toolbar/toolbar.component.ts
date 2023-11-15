@@ -1,4 +1,3 @@
-import { NgForOf } from '@angular/common'
 import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, OnInit, Output } from '@angular/core'
 import { ButtonComponent } from '@components/button'
 import { FormsModule } from '@angular/forms'
@@ -11,7 +10,7 @@ import { SelectComponent } from '@components/select'
 	selector: 'app-toolbar',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [NgForOf, NgxBootstrapIconsModule, ButtonComponent, FormsModule, SelectComponent],
+	imports: [NgxBootstrapIconsModule, ButtonComponent, FormsModule, SelectComponent],
 	templateUrl: './toolbar.component.html',
 })
 export class ToolbarComponent implements OnInit {

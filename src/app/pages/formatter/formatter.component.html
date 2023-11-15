@@ -20,4 +20,6 @@
 		(paste)="setInput($event)"
 	></pre>
 </form>
-<div class="absolute w-full bottom-0 text-white bg-red p-2 rounded-lg" *ngIf="output().error">{{ output().error }}</div>
+@if (output().error) {
+<div class="absolute w-full bottom-0 text-white bg-red p-2 rounded-lg">{{ output().error }}</div>
+}

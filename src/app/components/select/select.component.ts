@@ -1,4 +1,3 @@
-import { NgForOf, NgIf } from '@angular/common'
 import { ChangeDetectionStrategy, Component, HostBinding, Input, forwardRef } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { IconName, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons'
@@ -9,7 +8,7 @@ type ValueCallback<T> = (value: T) => void
 	selector: 'app-select',
 	templateUrl: './select.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	imports: [NgIf, NgForOf, NgxBootstrapIconsModule],
+	imports: [NgxBootstrapIconsModule],
 	standalone: true,
 	providers: [
 		{

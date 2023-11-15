@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common'
 import { ChangeDetectionStrategy, Component, HostBinding, signal } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { RouterLink } from '@angular/router'
@@ -8,7 +7,7 @@ import { filter } from 'rxjs'
 @Component({
 	selector: 'app-footer',
 	standalone: true,
-	imports: [RouterLink, NgIf],
+	imports: [RouterLink],
 	templateUrl: './footer.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
