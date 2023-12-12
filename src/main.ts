@@ -1,4 +1,5 @@
 import { importProvidersFrom, isDevMode } from '@angular/core'
+import { provideAnimations } from '@angular/platform-browser/animations'
 import { AppComponent } from './app/app.component'
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser'
 import {
@@ -21,6 +22,7 @@ bootstrapApplication(AppComponent, {
 			BrowserModule,
 			NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, github, download, trash, wifiOff })
 		),
+		provideAnimations(),
 		provideRouter(routes),
 		provideServiceWorker('ngsw-worker.js', {
 			enabled: !isDevMode(),

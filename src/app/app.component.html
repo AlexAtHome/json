@@ -1,3 +1,5 @@
 <app-header />
-<router-outlet role="presentation" />
+<div class="flex flex-col flex-grow relative" [@routeAnimations]="getRouteAnimation()">
+	<router-outlet role="presentation" />
+</div>
 <app-footer />

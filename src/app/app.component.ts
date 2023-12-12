@@ -1,5 +1,6 @@
 import { Component, HostBinding } from '@angular/core'
-import { RouterOutlet } from '@angular/router'
+import { ChildrenOutletContexts, RouterOutlet } from '@angular/router'
+import { routeAnimations } from '@animations/route'
 import { FooterComponent } from '@components/footer'
 import { HeaderComponent } from '@components/header'
 
@@ -8,7 +9,18 @@ import { HeaderComponent } from '@components/header'
 	templateUrl: './app.component.html',
 	standalone: true,
 	imports: [HeaderComponent, FooterComponent, RouterOutlet],
+	animations: [routeAnimations],
 })
 export class AppComponent {
 	@HostBinding('class') readonly className = 'flex flex-col h-screen'
+
+	constructor(private readonly contexts: ChildrenOutletContexts) {}
+
+	getRouteAnimation(): string {
+		let state = this.contexts.getContext('primary')?.route?.snapshot?.data?.['animation'] ?? 'none'
+		if (window.matchMedia(`(prefers-reduced-motion: reduce)`).matches) {
+			state += 'Fade'
+		}
+		return state
+	}
 }
