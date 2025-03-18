@@ -5,26 +5,34 @@ on:
     tags:
       - 1.*.*
 
+permissions:
+  pages: write
+  id-token: write
+
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Use Node.js 18
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 22
       - name: Build
         run: |
-          npm install
+          npm ci
           npm run build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        if: success()
-        uses: crazy-max/ghaction-github-pages@v3
-        with:
-          target_branch: gh-pages
-          build_dir: dist/json
-          fqdn: json.alexalex.dev
-        env:
-          GITHUB_TOKEN: ${{ secrets.DEPLOY_KEY }}
+        id: deployment
+        uses: actions/deploy-pages@v4
