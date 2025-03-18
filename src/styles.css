@@ -30,12 +30,12 @@
 @layer components {
 	.formatter-layout {
 		@apply grid lg:grid-cols-2 gap-4 relative w-full min-h-24 grow lg:min-h-full h-auto p-4;
-		grid-template-rows: auto auto 1fr;
+		grid-template-rows: auto auto 2rem 1fr;
 	}
 
 	@media (width >=64rem) {
 		.formatter-layout {
-			grid-template-rows: 2rem 1fr;
+			grid-template-rows: auto 1fr;
 		}
 	}
 }
