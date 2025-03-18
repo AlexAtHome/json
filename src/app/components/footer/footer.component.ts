@@ -6,7 +6,6 @@ import { filter } from 'rxjs'
 
 @Component({
 	selector: 'app-footer',
-	standalone: true,
 	imports: [RouterLink],
 	templateUrl: './footer.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,

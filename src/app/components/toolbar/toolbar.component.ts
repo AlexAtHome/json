@@ -8,7 +8,6 @@ import { SelectComponent } from '@components/select'
 
 @Component({
 	selector: 'app-toolbar',
-	standalone: true,
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [NgxBootstrapIconsModule, ButtonComponent, FormsModule, SelectComponent],
 	templateUrl: './toolbar.component.html',

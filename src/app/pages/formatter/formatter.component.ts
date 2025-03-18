@@ -9,7 +9,6 @@ import { Indent, IndentSize, IndentType } from '@interfaces/json.interface'
 @Component({
 	selector: 'app-formatter',
 	templateUrl: './formatter.component.html',
-	standalone: true,
 	imports: [ToolbarComponent],
 })
 export class FormatterComponent {

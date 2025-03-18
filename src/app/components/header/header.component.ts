@@ -4,7 +4,6 @@ import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons'
 
 @Component({
 	selector: 'app-header',
-	standalone: true,
 	templateUrl: './header.component.html',
 	imports: [NgxBootstrapIconsModule, RouterLink],
 })

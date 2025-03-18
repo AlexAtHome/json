@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core'
 
 @Component({
 	selector: 'app-privacy-policy',
-	standalone: true,
 	imports: [DatePipe],
 	templateUrl: './privacy-policy.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,

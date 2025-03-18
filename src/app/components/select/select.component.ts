@@ -9,7 +9,6 @@ type ValueCallback<T> = (value: T) => void
 	templateUrl: './select.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [NgxBootstrapIconsModule],
-	standalone: true,
 	providers: [
 		{
 			provide: NG_VALUE_ACCESSOR,
