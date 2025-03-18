@@ -7,15 +7,15 @@ import { restoreIndent, saveIndent } from '@func/storage'
 import { SelectComponent } from '@components/select'
 
 @Component({
-	selector: 'app-toolbar',
+	selector: 'app-output-toolbar',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [NgxBootstrapIconsModule, ButtonComponent, FormsModule, SelectComponent],
-	templateUrl: './toolbar.component.html',
+	templateUrl: './output-toolbar.component.html',
 	host: {
 		class: 'flex flex-row flex-wrap gap-4',
 	},
 })
-export class ToolbarComponent implements OnInit {
+export class OutputToolbarComponent implements OnInit {
 	readonly indentSizes = indentSizes
 	readonly indentTypes = indentTypes
 	public indentSize: IndentSize = 4

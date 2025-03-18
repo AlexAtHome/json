@@ -1,6 +1,6 @@
 import { Component, computed, model, signal } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { ToolbarComponent } from '@components/toolbar'
+import { OutputToolbarComponent } from '@components/output-toolbar'
 import copy from '@func/copy'
 import download from '@func/download'
 import { formatJson } from '@func/format-json'
@@ -10,7 +10,7 @@ import { Indent, IndentSize, IndentType } from '@interfaces/json.interface'
 @Component({
 	selector: 'app-formatter',
 	templateUrl: './formatter.component.html',
-	imports: [ToolbarComponent, FormsModule],
+	imports: [OutputToolbarComponent, FormsModule],
 	host: {
 		class: 'formatter-layout',
 		role: 'application',

@@ -1,26 +1,26 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { ToolbarComponent } from './toolbar.component'
+import { OutputToolbarComponent } from './output-toolbar.component'
 import { NgxBootstrapIconsModule, clipboard, download, indent, textIndentLeft, trash } from 'ngx-bootstrap-icons'
 import { FormsModule } from '@angular/forms'
 import { ButtonComponent } from '@components/button'
 import { saveIndent } from '@func/storage'
 
-describe('ToolbarComponent', () => {
-	let component: ToolbarComponent
-	let fixture: ComponentFixture<ToolbarComponent>
+describe(OutputToolbarComponent.name, () => {
+	let component: OutputToolbarComponent
+	let fixture: ComponentFixture<OutputToolbarComponent>
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			imports: [
-				ToolbarComponent,
+				OutputToolbarComponent,
 				NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, download, trash }),
 				ButtonComponent,
 				FormsModule,
 			],
 		}).compileComponents()
 
-		fixture = TestBed.createComponent(ToolbarComponent)
+		fixture = TestBed.createComponent(OutputToolbarComponent)
 		component = fixture.componentInstance
 		fixture.detectChanges()
 	})
@@ -39,7 +39,7 @@ describe('ToolbarComponent', () => {
 			size: 4,
 			type: 'Tabs',
 		})
-		fixture = TestBed.createComponent(ToolbarComponent)
+		fixture = TestBed.createComponent(OutputToolbarComponent)
 		component = fixture.componentInstance
 		fixture.detectChanges()
 

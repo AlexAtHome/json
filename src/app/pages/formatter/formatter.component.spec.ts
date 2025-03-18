@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { FormatterComponent } from './formatter.component'
-import { ToolbarComponent } from '@components/toolbar'
+import { OutputToolbarComponent } from '@components/output-toolbar'
 import { NgxBootstrapIconsModule, clipboard, download, indent, textIndentLeft, trash } from 'ngx-bootstrap-icons'
 
-describe('FormatterComponent', () => {
+describe(FormatterComponent.name, () => {
 	let component: FormatterComponent
 	let fixture: ComponentFixture<FormatterComponent>
 
@@ -12,7 +12,7 @@ describe('FormatterComponent', () => {
 		await TestBed.configureTestingModule({
 			imports: [
 				FormatterComponent,
-				ToolbarComponent,
+				OutputToolbarComponent,
 				NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, download, trash }),
 			],
 		}).compileComponents()
