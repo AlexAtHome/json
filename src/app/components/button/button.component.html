@@ -2,18 +2,21 @@
 	[type]="type"
 	[disabled]="disabled"
 	[ngClass]="{
-		'hover:bg-blue-300/80': color === 'blue',
-		'hover:bg-green-300/80': color === 'green',
-		'hover:bg-red-300/80': color === 'red',
+		'dark:hover:bg-blue-300/80 hover:bg-blue-600/80': color === 'blue',
+		'dark:hover:bg-green-300/80 hover:bg-green-600/80': color === 'green',
+		'dark:hover:bg-red-300/80 hover:bg-red-600/80': color === 'red',
 	}"
 	[class.bg-gray-500]="disabled"
-	[class.bg-blue-300]="color === 'blue'"
+	[class.dark:bg-blue-300]="color === 'blue'"
+	[class.bg-blue-600]="color === 'blue'"
 	[class.focus:outline-blue-300]="color === 'blue'"
-	[class.bg-red-300]="color === 'red'"
+	[class.dark:bg-red-300]="color === 'red'"
+	[class.bg-red-600]="color === 'red'"
 	[class.focus:outline-red-300]="color === 'red'"
-	[class.bg-green-300]="color === 'green'"
+	[class.dark:bg-green-300]="color === 'green'"
+	[class.bg-green-600]="color === 'green'"
 	[class.focus:outline-green-300]="color === 'green'"
-	class="inline-flex md:py-1 md:px-3 py-3 px-6 cursor-pointer rounded-sm text-white dark:text-black justify-center items-center gap-2 text-sm focus:outline focus:outline-offset-2"
+	class="inline-flex py-1 px-3 cursor-pointer rounded-sm text-white dark:text-black justify-center items-center gap-2 text-sm focus:outline focus:outline-offset-2"
 	(click)="click.emit($event)"
 >
 	<ng-content />

@@ -14,8 +14,8 @@ import { SelectComponent } from '@components/select'
 })
 export class ToolbarComponent implements OnInit {
 	@HostBinding('class') readonly className = 'flex flex-row flex-wrap gap-4'
-	public indentSizes = indentSizes
-	public indentTypes = indentTypes
+	readonly indentSizes = indentSizes
+	readonly indentTypes = indentTypes
 	public indentSize: IndentSize = 2
 	public indentType: IndentType = 'Spaces'
 
