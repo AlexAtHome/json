@@ -8,13 +8,15 @@
 	(resetClick)="reset()"
 />
 }
-<form class="relative w-full min-h-96 lg:h-full row-start-3 lg:row-start-1 row-span-1 lg:row-span-2">
-	<app-input-toolbar [(decodeBase64)]="decodeBase64" />
+<form
+	class="relative flex flex-col w-full lg:min-h-auto lg:h-full row-start-3 gap-4 lg:row-start-1 row-span-1 lg:row-span-2"
+>
+	<app-input-toolbar class="block h-8" [(decodeBase64)]="decodeBase64" />
 	<label class="sr-only" for="raw-input">Raw input</label>
 	<textarea
 		id="raw-input"
 		name="raw-input"
-		class="font-mono relative w-full bg-zinc-300 dark:bg-slate-950 min-h-full rounded-lg p-2 overflow-auto outline-purple-400/50 focus:outline outline-offset-2"
+		class="font-mono relative w-full bg-zinc-300 dark:bg-slate-950 h-full rounded-lg p-2 overflow-auto outline-purple-400/50 focus:outline outline-offset-2"
 		placeholder="Put the raw input here..."
 		[class.outline-red]="!!output().error"
 		[class.outline]="!!output().error"
@@ -22,7 +24,7 @@
 		[style.tabSize]="indentSize()"
 	></textarea>
 	@if (output().error) {
-	<div class="lg:absolute w-full lg:bottom-0 lg:left-0 lgright-0 text-white bg-red-400 p-2 rounded-lg">
+	<div class="fixed lg:absolute w-full bottom-0 left-0 right-0 text-white bg-red-400 p-2 rounded-lg">
 		{{ output().error }}
 	</div>
 	}
