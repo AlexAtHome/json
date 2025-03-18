@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, OnInit, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core'
 import { ButtonComponent } from '@components/button'
 import { FormsModule } from '@angular/forms'
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons'
@@ -11,13 +11,15 @@ import { SelectComponent } from '@components/select'
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [NgxBootstrapIconsModule, ButtonComponent, FormsModule, SelectComponent],
 	templateUrl: './toolbar.component.html',
+	host: {
+		class: 'flex flex-row flex-wrap gap-4',
+	},
 })
 export class ToolbarComponent implements OnInit {
-	@HostBinding('class') readonly className = 'flex flex-row flex-wrap gap-4'
 	readonly indentSizes = indentSizes
 	readonly indentTypes = indentTypes
-	public indentSize: IndentSize = 2
-	public indentType: IndentType = 'Spaces'
+	public indentSize: IndentSize = 4
+	public indentType: IndentType = 'Tabs'
 
 	@Output() downloadClick = new EventEmitter<void>()
 	@Output() copyClick = new EventEmitter<void>()
