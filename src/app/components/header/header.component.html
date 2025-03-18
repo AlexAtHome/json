@@ -1,10 +1,10 @@
 <div class="flex gap-8 items-center">
 	<a
 		routerLink="/"
-		class="focus:outline focus:outline-offset-2 focus:outline-mauve focus:outline-1 rounded-sm cursor-pointer font-sans font-bold text-xl sm:text-5xl from-pink to-mauve bg-gradient-to-r bg-clip-text text-transparent"
+		class="focus:outline focus:outline-offset-2 focus:outline-mauve rounded-xs cursor-pointer font-sans font-bold text-xl sm:text-5xl text-purple-700 dark:text-purple-300"
 	>
-		JSON Formatter</a
-	>
+		JSON Formatter
+	</a>
 	@if (isOffline) {
 	<span class="text-red inline-flex gap-4 items-center animate-pulse" role="alert">
 		<i-bs name="wifi-off" width="2em" height="2em" title="No internet connection!" role="presentation" />
@@ -19,7 +19,7 @@
 			<a
 				[href]="githubUrl"
 				target="_blank"
-				class="text-black dark:text-white justify-between hover:text-gray-300 focus:outline outline-pink outline-1 rounded-sm inline-flex outline-offset-2"
+				class="text-black dark:text-white justify-between hover:text-gray-300 focus:outline outline-purple-300 rounded-xs inline-flex outline-offset-2"
 			>
 				<i-bs aria-hidden="true" name="github" width="2em" height="2em" />
 				<span class="sr-only">Source code on Github</span>

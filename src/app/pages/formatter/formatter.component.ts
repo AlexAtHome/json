@@ -1,4 +1,4 @@
-import { Component, HostBinding, computed, signal } from '@angular/core'
+import { Component, computed, signal } from '@angular/core'
 import { ToolbarComponent } from '@components/toolbar'
 import copy from '@func/copy'
 import download from '@func/download'
@@ -10,11 +10,12 @@ import { Indent, IndentSize, IndentType } from '@interfaces/json.interface'
 	selector: 'app-formatter',
 	templateUrl: './formatter.component.html',
 	imports: [ToolbarComponent],
+	host: {
+		class: 'flex flex-col grow gap-2 sm:gap-4 relative w-full md:w-8/12 p-4',
+		role: 'application',
+	},
 })
 export class FormatterComponent {
-	@HostBinding('class') readonly className = 'flex flex-col flex-grow gap-2 sm:gap-4 relative w-full md:w-8/12 p-4'
-	@HostBinding('attr.role') readonly role = 'application'
-
 	private readonly indentType = signal<IndentType>('Spaces', { equal: isEqual })
 
 	protected readonly indentSize = signal<IndentSize>(2, { equal: isEqual })

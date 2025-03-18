@@ -19,7 +19,7 @@ type ValueCallback<T> = (value: T) => void
 })
 export class SelectComponent<T> implements ControlValueAccessor {
 	@HostBinding('class') readonly className =
-		'text-black dark:text-white pl-3 rounded bg-transparent inline-flex gap-1 items-center'
+		'text-black dark:text-white pl-3 rounded-sm bg-transparent inline-flex gap-1 items-center'
 	@HostBinding('attr.role') readonly role = 'presentation'
 	@Input() icon?: IconName
 	@Input() label?: string
