@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
 import { RouterLink } from '@angular/router'
 import { SwUpdate } from '@angular/service-worker'
@@ -9,10 +9,11 @@ import { filter } from 'rxjs'
 	imports: [RouterLink],
 	templateUrl: './footer.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: {
+		class: 'flex justify-between items-center text-black dark:text-white font-sans p-4',
+	},
 })
 export class FooterComponent {
-	@HostBinding('attr.class') readonly className =
-		'flex justify-between items-center text-black dark:text-white font-sans p-4'
 	protected readonly currentYear = new Date().getFullYear()
 
 	protected readonly isUpdateButtonVisible = signal(false)

@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core'
+import { Component } from '@angular/core'
 import { ChildrenOutletContexts, RouterOutlet } from '@angular/router'
 import { routeAnimations } from '@animations/route'
 import { FooterComponent } from '@components/footer'
@@ -9,10 +9,11 @@ import { HeaderComponent } from '@components/header'
 	templateUrl: './app.component.html',
 	imports: [HeaderComponent, FooterComponent, RouterOutlet],
 	animations: [routeAnimations],
+	host: {
+		class: 'flex flex-col h-screen',
+	},
 })
 export class AppComponent {
-	@HostBinding('class') readonly className = 'flex flex-col h-screen'
-
 	constructor(private readonly contexts: ChildrenOutletContexts) {}
 
 	getRouteAnimation(): string {
