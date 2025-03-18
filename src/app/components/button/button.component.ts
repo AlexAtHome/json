@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input } from '@angular/core'
 import { NgClass } from '@angular/common'
 
 @Component({
 	selector: 'app-button',
 	imports: [NgClass],
 	templateUrl: './button.component.html',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	host: {
 		class: 'contents',
 	},

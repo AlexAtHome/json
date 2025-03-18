@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { ChildrenOutletContexts, RouterOutlet } from '@angular/router'
 import { routeAnimations } from '@animations/route'
 import { FooterComponent } from '@components/footer'
@@ -8,6 +8,7 @@ import { HeaderComponent } from '@components/header'
 	selector: 'app-root',
 	templateUrl: './app.component.html',
 	imports: [HeaderComponent, FooterComponent, RouterOutlet],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	animations: [routeAnimations],
 	host: {
 		class: 'flex flex-col h-screen',

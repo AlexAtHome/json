@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core'
+import { ChangeDetectionStrategy, Component, HostListener } from '@angular/core'
 import { RouterLink } from '@angular/router'
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons'
 
@@ -6,6 +6,7 @@ import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons'
 	selector: 'app-header',
 	templateUrl: './header.component.html',
 	imports: [NgxBootstrapIconsModule, RouterLink],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	host: {
 		class: 'flex relative p-4 items-center justify-between',
 	},

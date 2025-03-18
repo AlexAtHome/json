@@ -1,4 +1,4 @@
-import { Component, computed, model, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed, model, signal } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { InputToolbarComponent } from '@components/input-toolbar/input-toolbar.component'
 import { OutputToolbarComponent } from '@components/output-toolbar'
@@ -11,6 +11,7 @@ import type { IndentSize, IndentType } from '@interfaces/json.interface'
 @Component({
 	selector: 'app-formatter',
 	templateUrl: './formatter.component.html',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 	imports: [OutputToolbarComponent, InputToolbarComponent, FormsModule],
 	host: {
 		class: 'formatter-layout',
