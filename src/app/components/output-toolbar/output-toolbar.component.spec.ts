@@ -43,22 +43,14 @@ describe(OutputToolbarComponent.name, () => {
 		component = fixture.componentInstance
 		fixture.detectChanges()
 
-		expect(component.indentSize).toEqual(4)
-		expect(component.indentType).toEqual('Tabs')
-	})
-
-	it('should emit the new indent settings', () => {
-		component.indentType = 'Spaces'
-		component.indentSize = 8
-		jest.spyOn(component.indentChange, 'emit')
-		component.setIndent()
-		expect(component.indentChange.emit).toHaveBeenCalledWith({ size: 8, type: 'Spaces' })
+		expect(component.indentSize()).toEqual(4)
+		expect(component.indentType()).toEqual('Tabs')
 	})
 
 	it('should save settings to the local storage', () => {
-		component.indentType = 'Tabs'
-		component.indentSize = 4
-		component.setIndent()
+		fixture.componentRef.setInput('indentType', 'Tabs')
+		fixture.componentRef.setInput('indentSize', 4)
+		component.saveIndent()
 		expect(localStorage.getItem('indent')).toEqual('{"size":4,"type":"Tabs"}')
 	})
 

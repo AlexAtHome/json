@@ -1,13 +1,15 @@
 @let hasError = !!output().error; @if (output().data && !hasError) {
 <app-output-toolbar
 	class="lg:col-start-2 lg:col-end-3 row-start-1 lg:row-start-1 row-span-1 lg:h-8"
+	[(indentSize)]="indentSize"
+	[(indentType)]="indentType"
 	(copyClick)="copy()"
 	(downloadClick)="download()"
-	(indentChange)="setIndent($event)"
 	(resetClick)="reset()"
 />
 }
 <form class="relative w-full min-h-96 lg:h-full row-start-3 lg:row-start-1 row-span-1 lg:row-span-2">
+	<app-input-toolbar [(decodeBase64)]="decodeBase64" />
 	<label class="sr-only" for="raw-input">Raw input</label>
 	<textarea
 		id="raw-input"

@@ -10,13 +10,14 @@
 	icon="indent"
 	[list]="$any(indentTypes)"
 	[(ngModel)]="indentType"
-	(change)="setIndent()"
+	(change)="saveIndent()"
 />
+
 <app-select
 	id="indent-size"
 	srOnlyLabel="Indent size"
 	icon="text-indent-left"
 	[list]="$any(indentSizes)"
 	[(ngModel)]="indentSize"
-	(change)="setIndent()"
+	(change)="saveIndent()"
 />

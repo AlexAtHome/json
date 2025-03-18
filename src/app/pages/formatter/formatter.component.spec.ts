@@ -22,7 +22,27 @@ describe(FormatterComponent.name, () => {
 		fixture.detectChanges()
 	})
 
-	it('should create', () => {
-		expect(component).toBeTruthy()
+	it('should decode a string before converting to json', () => {
+		fixture.componentRef.setInput('decodeBase64', true)
+		component.indentType.set('Tabs')
+		const foo = { foo: 'bar' }
+		const expected = JSON.stringify(foo, null, '\t')
+
+		fixture.componentRef.setInput('input', 'eyJmb28iOiJiYXIifQ==')
+
+		expect(component.output().data).toEqual(expected)
+	})
+
+	describe('when the json is invalid', () => {
+		it('contains the error text', () => {
+			fixture.componentRef.setInput('input', '{invalidjsonhere')
+			expect(component.output().error).toBeTruthy()
+		})
+
+		it('does not prettify the output', () => {
+			const input = '{foo:bar'
+			fixture.componentRef.setInput('input', input)
+			expect(component.output().data).toEqual(input)
+		})
 	})
 })

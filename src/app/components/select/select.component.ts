@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, forwardRef } from '@angular/core'
+import { ChangeDetectionStrategy, Component, Input, forwardRef } from '@angular/core'
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms'
 import { IconName, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons'
 
@@ -16,11 +16,12 @@ type ValueCallback<T> = (value: T) => void
 			multi: true,
 		},
 	],
+	host: {
+		class: 'text-black dark:text-white pl-3 rounded-sm bg-transparent inline-flex gap-1 items-center',
+		role: 'presentation',
+	},
 })
 export class SelectComponent<T> implements ControlValueAccessor {
-	@HostBinding('class') readonly className =
-		'text-black dark:text-white pl-3 rounded-sm bg-transparent inline-flex gap-1 items-center'
-	@HostBinding('attr.role') readonly role = 'presentation'
 	@Input() icon?: IconName
 	@Input() label?: string
 	@Input() srOnlyLabel?: string

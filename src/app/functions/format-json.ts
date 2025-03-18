@@ -13,13 +13,8 @@ export const formatJson = (value: string, indentType: IndentType, indentSize: In
 		return { data, error }
 	}
 
-	try {
-		data = JSON.stringify(JSON.parse(value), null, indentType === 'Tabs' ? '\t' : indentSize)
-		error = ''
-	} catch (err) {
-		error = (err as SyntaxError).message
-		data = value
-	}
+	data = JSON.stringify(JSON.parse(value), null, indentType === 'Tabs' ? '\t' : indentSize)
+	error = ''
 
 	return { data, error }
 }

@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, model, OnInit, output } from '@angular/core'
 import { ButtonComponent } from '@components/button'
 import { FormsModule } from '@angular/forms'
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons'
-import { Indent, IndentSize, IndentType, indentSizes, indentTypes } from '@interfaces/json.interface'
+import { IndentSize, IndentType, indentSizes, indentTypes } from '@interfaces/json.interface'
 import { restoreIndent, saveIndent } from '@func/storage'
 import { SelectComponent } from '@components/select'
 
@@ -18,26 +18,23 @@ import { SelectComponent } from '@components/select'
 export class OutputToolbarComponent implements OnInit {
 	readonly indentSizes = indentSizes
 	readonly indentTypes = indentTypes
-	public indentSize: IndentSize = 4
-	public indentType: IndentType = 'Tabs'
+	readonly indentSize = model<IndentSize>(4)
+	readonly indentType = model<IndentType>('Tabs')
 
-	@Output() downloadClick = new EventEmitter<void>()
-	@Output() copyClick = new EventEmitter<void>()
-	@Output() indentChange = new EventEmitter<Indent>()
-	@Output() resetClick = new EventEmitter<void>()
+	readonly downloadClick = output<void>()
+	readonly copyClick = output<void>()
+	readonly resetClick = output<void>()
 
 	ngOnInit(): void {
 		const storedSettings = restoreIndent()
 		if (storedSettings) {
-			this.indentSize = +storedSettings.size as IndentSize
-			this.indentType = storedSettings.type
-			this.setIndent()
+			this.indentSize.set(+storedSettings.size as IndentSize)
+			this.indentType.set(storedSettings.type)
 		}
 	}
 
-	public setIndent(): void {
-		const indent = { size: +this.indentSize as IndentSize, type: this.indentType }
-		this.indentChange.emit(indent)
+	public saveIndent(): void {
+		const indent = { size: this.indentSize(), type: this.indentType() }
 		saveIndent(indent)
 	}
 
