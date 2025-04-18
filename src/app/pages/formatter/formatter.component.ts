@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, model, signal } from '@angular/core'
+import { ChangeDetectionStrategy, Component, computed, model, signal } from '@angular/core'
 import { FormsModule } from '@angular/forms'
 import { InputToolbarComponent } from '@components/input-toolbar/input-toolbar.component'
 import { OutputToolbarComponent } from '@components/output-toolbar'
@@ -63,18 +63,25 @@ export class FormatterComponent {
 				data: '',
 			}
 		}
-		const xmlRef = document.implementation.createDocument('', '', null)
-		const node = this.domParser.parseFromString(this.decodedValue(), 'application/xml')
-		const fragment = this.xslt.transformToFragment(node, xmlRef)
-		const child = fragment.children[0]
-		if (child.localName === 'parsererror') {
-			return {
-				data: this.decodedValue(),
-				error: fragment.children[0].textContent ?? undefined,
-			}
-		}
+		const serializer = new XMLSerializer()
+		const node = this.domParser.parseFromString(this.decodedValue(), 'text/xml')
+		const formattedNode = serializer.serializeToString(node)
+		console.log(formattedNode)
+
+		// const cloneNode = node.cloneNode(true)
+		// xmlRef.appendChild(cloneNode)
+		// const fragment = this.xslt.transformToFragment(cloneNode, xmlRef)
+		// console.log(fragment)
+		// const child = fragment.children[0]
+		// if (child.localName === 'parsererror') {
+		// 	return {
+		// 		data: this.decodedValue(),
+		// 		error: fragment.children[0].textContent ?? undefined,
+		// 	}
+		// }
+		// console.log(fragment)
 		return {
-			data: child.outerHTML,
+			data: '',
 		}
 	}
 
