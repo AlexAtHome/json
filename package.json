@@ -27,7 +27,7 @@
 		"@angular/service-worker": "^20.1.7",
 		"@tailwindcss/postcss": "^4.0.14",
 		"autoprefixer": "^10.4.14",
-		"ngx-bootstrap-icons": "^1.9.2",
+		"ngx-bootstrap-icons": "^1.9.3",
 		"postcss": "^8.5.3",
 		"rxjs": "~7.8.0",
 		"tailwindcss": "^4.0.14",
