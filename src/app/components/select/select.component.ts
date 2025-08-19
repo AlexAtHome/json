@@ -17,7 +17,7 @@ type ValueCallback<T> = (value: T) => void
 		},
 	],
 	host: {
-		class: 'text-black dark:text-white pl-3 rounded-sm bg-transparent inline-flex gap-1 items-center',
+		class: 'text-black dark:text-white rounded-sm bg-transparent inline-flex gap-1 items-center',
 		role: 'presentation',
 	},
 })
