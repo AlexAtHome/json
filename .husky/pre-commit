@@ -3,4 +3,4 @@
 
 npx lint-staged
 ng lint
-ng test
+ng test --no-watch

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-
 import { OutputToolbarComponent } from './output-toolbar.component'
 import { NgxBootstrapIconsModule, clipboard, download, indent, textIndentLeft, trash } from 'ngx-bootstrap-icons'
 import { FormsModule } from '@angular/forms'
@@ -27,7 +26,6 @@ describe(OutputToolbarComponent.name, () => {
 
 	afterEach(() => {
 		localStorage.clear()
-		jest.restoreAllMocks()
 	})
 
 	it('should create', () => {
@@ -55,19 +53,19 @@ describe(OutputToolbarComponent.name, () => {
 	})
 
 	it('should send the copy signal', () => {
-		jest.spyOn(component.copyClick, 'emit')
+		vi.spyOn(component.copyClick, 'emit')
 		component.copyOutput()
 		expect(component.copyClick.emit).toHaveBeenCalled()
 	})
 
 	it('should send the download signal', () => {
-		jest.spyOn(component.downloadClick, 'emit')
+		vi.spyOn(component.downloadClick, 'emit')
 		component.downloadOutput()
 		expect(component.downloadClick.emit).toHaveBeenCalled()
 	})
 
 	it('should send the reset signal', () => {
-		jest.spyOn(component.resetClick, 'emit')
+		vi.spyOn(component.resetClick, 'emit')
 		component.reset()
 		expect(component.resetClick.emit).toHaveBeenCalled()
 	})

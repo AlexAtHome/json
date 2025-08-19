@@ -3,7 +3,7 @@ import copy from './copy'
 test('copy() copies the passed attribute', async () => {
 	Object.assign(navigator, {
 		clipboard: {
-			writeText: jest.fn(),
+			writeText: vi.fn(),
 		},
 	})
 
