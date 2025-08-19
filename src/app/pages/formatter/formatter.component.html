@@ -1,4 +1,4 @@
-<app-input-toolbar class="block row-start-3 lg:row-start-1" [(decodeBase64)]="decodeBase64" />
+<app-input-toolbar class="block row-start-3 lg:row-start-1" [(decodeBase64)]="decodeBase64" [(format)]="format" />
 <form class="relative flex flex-col w-full lg:min-h-auto lg:h-full row-start-4 gap-4 lg:row-start-2 lg:row-span-2">
 	<label class="sr-only" for="raw-input">Raw input</label>
 	<textarea
@@ -17,11 +17,13 @@
 	</div>
 	}
 </form>
+
 @if (output().data) {
 <app-output-toolbar
 	class="lg:col-start-2 lg:col-end-3 row-start-1 lg:row-start-1 lg:h-8"
 	[(indentSize)]="indentSize"
 	[(indentType)]="indentType"
+	[(encodeBase64)]="encodeBase64"
 	(copyClick)="copy()"
 	(downloadClick)="download()"
 	(resetClick)="reset()"
@@ -29,6 +31,6 @@
 <output
 	class="relative w-full h-full whitespace-pre-wrap font-mono lg:col-start-2 row-start-2"
 	[style.tabSize]="indentSize()"
-	[innerHTML]="output().data"
+	[innerHTML]="encodedValue()"
 ></output>
 }

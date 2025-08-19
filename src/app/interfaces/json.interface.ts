@@ -10,3 +10,7 @@ export interface Indent {
 	size: IndentSize
 	type: IndentType
 }
+
+export const formats = ['json', 'plain'] as const
+
+export type Format = (typeof formats)[number]

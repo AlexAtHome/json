@@ -6,7 +6,7 @@ import copy from '@func/copy'
 import download from '@func/download'
 import { formatJson } from '@func/format-json'
 import { isEqual } from '@func/is-equal'
-import type { IndentSize, IndentType } from '@interfaces/json.interface'
+import type { Format, IndentSize, IndentType } from '@interfaces/json.interface'
 
 @Component({
 	selector: 'app-formatter',
@@ -23,26 +23,43 @@ export class FormatterComponent {
 	readonly indentSize = signal<IndentSize>(2, { equal: isEqual })
 	protected readonly input = model<string>('')
 	protected readonly decodeBase64 = model(false)
+	protected readonly encodeBase64 = model(false)
+	protected readonly format = model<Format>('json')
 
 	protected readonly decodedValue = computed(() => {
 		if (this.decodeBase64()) {
 			return atob(this.input())
-		} else {
-			return this.input().trim()
 		}
+		return this.input().trim()
 	})
 
 	readonly output = computed(() => {
 		try {
-			const size = Number(this.indentSize()) as IndentSize
-			// TODO: Fix the select component so it returns a number when it's passed a list of numbers
-			return formatJson(this.decodedValue(), this.indentType(), size)
+			switch (this.format()) {
+				case 'json': {
+					// TODO: Fix the select component so it returns a number when it's passed a list of numbers
+					const size = Number(this.indentSize()) as IndentSize
+					return formatJson(this.decodedValue(), this.indentType(), size)
+				}
+				default: {
+					return {
+						data: this.decodedValue().trim(),
+					}
+				}
+			}
 		} catch (e) {
 			return {
 				data: this.input().trim(),
 				error: (e as Error).message,
 			}
 		}
+	})
+
+	protected readonly encodedValue = computed(() => {
+		if (this.encodeBase64() && !this.output().error) {
+			return btoa(this.output().data)
+		}
+		return this.output().data
 	})
 
 	protected copy(): void {

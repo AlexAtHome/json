@@ -1,9 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { OutputToolbarComponent } from './output-toolbar.component'
-import { NgxBootstrapIconsModule, clipboard, download, indent, textIndentLeft, trash } from 'ngx-bootstrap-icons'
+import {
+	NgxBootstrapIconsModule,
+	clipboard,
+	codeSlash,
+	download,
+	indent,
+	textIndentLeft,
+	trash,
+} from 'ngx-bootstrap-icons'
 import { FormsModule } from '@angular/forms'
 import { ButtonComponent } from '@components/button'
 import { saveIndent } from '@func/storage'
+import { beforeEach, afterEach } from 'vitest'
 
 describe(OutputToolbarComponent.name, () => {
 	let component: OutputToolbarComponent
@@ -13,7 +22,7 @@ describe(OutputToolbarComponent.name, () => {
 		await TestBed.configureTestingModule({
 			imports: [
 				OutputToolbarComponent,
-				NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, download, trash }),
+				NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, download, trash, codeSlash }),
 				ButtonComponent,
 				FormsModule,
 			],

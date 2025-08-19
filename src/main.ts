@@ -11,6 +11,7 @@ import {
 	trash,
 	NgxBootstrapIconsModule,
 	wifiOff,
+	codeSlash,
 } from 'ngx-bootstrap-icons'
 import { provideRouter } from '@angular/router'
 import { routes } from './routes'
@@ -20,7 +21,7 @@ bootstrapApplication(AppComponent, {
 	providers: [
 		importProvidersFrom(
 			BrowserModule,
-			NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, github, download, trash, wifiOff })
+			NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, github, download, trash, wifiOff, codeSlash })
 		),
 		provideAnimations(),
 		provideRouter(routes),

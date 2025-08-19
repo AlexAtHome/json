@@ -2,3 +2,5 @@
 	<input type="checkbox" name="decodeBase64" [(ngModel)]="decodeBase64" />
 	Decode from Base64
 </label>
+
+<app-select id="format" srOnlyLabel="Format" icon="code-slash" [list]="$any(formats)" [(ngModel)]="format" />

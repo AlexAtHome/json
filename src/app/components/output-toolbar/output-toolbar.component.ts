@@ -12,7 +12,7 @@ import { SelectComponent } from '@components/select'
 	imports: [NgxBootstrapIconsModule, ButtonComponent, FormsModule, SelectComponent],
 	templateUrl: './output-toolbar.component.html',
 	host: {
-		class: 'flex flex-row flex-wrap gap-4',
+		class: 'flex flex-row items-center flex-wrap gap-4',
 	},
 })
 export class OutputToolbarComponent implements OnInit {
@@ -20,6 +20,7 @@ export class OutputToolbarComponent implements OnInit {
 	readonly indentTypes = indentTypes
 	readonly indentSize = model<IndentSize>(4)
 	readonly indentType = model<IndentType>('Tabs')
+	readonly encodeBase64 = model(false)
 
 	readonly downloadClick = output<void>()
 	readonly copyClick = output<void>()

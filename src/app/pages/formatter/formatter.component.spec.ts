@@ -2,7 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 
 import { FormatterComponent } from './formatter.component'
 import { OutputToolbarComponent } from '@components/output-toolbar'
-import { NgxBootstrapIconsModule, clipboard, download, indent, textIndentLeft, trash } from 'ngx-bootstrap-icons'
+import {
+	NgxBootstrapIconsModule,
+	clipboard,
+	codeSlash,
+	download,
+	indent,
+	textIndentLeft,
+	trash,
+} from 'ngx-bootstrap-icons'
 
 describe(FormatterComponent.name, () => {
 	let component: FormatterComponent
@@ -13,7 +21,7 @@ describe(FormatterComponent.name, () => {
 			imports: [
 				FormatterComponent,
 				OutputToolbarComponent,
-				NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, download, trash }),
+				NgxBootstrapIconsModule.pick({ clipboard, indent, textIndentLeft, download, trash, codeSlash }),
 			],
 		}).compileComponents()
 
@@ -30,7 +38,7 @@ describe(FormatterComponent.name, () => {
 
 		fixture.componentRef.setInput('input', 'eyJmb28iOiJiYXIifQ==')
 
-		expect(component.output().data).toEqual(expected)
+		expect(component.output().data).toBe(expected)
 	})
 
 	describe('when the json is invalid', () => {
@@ -42,7 +50,13 @@ describe(FormatterComponent.name, () => {
 		it('does not prettify the output', () => {
 			const input = '{foo:bar'
 			fixture.componentRef.setInput('input', input)
-			expect(component.output().data).toEqual(input)
+			expect(component.output().data).toBe(input)
 		})
+	})
+
+	it('should trim a plain text', () => {
+		fixture.componentRef.setInput('format', 'plain')
+		fixture.componentRef.setInput('input', '   untrimmed     text    ')
+		expect(component.output().data).toBe('untrimmed     text')
 	})
 })

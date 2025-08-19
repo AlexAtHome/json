@@ -21,3 +21,8 @@
 	[(ngModel)]="indentSize"
 	(change)="saveIndent()"
 />
+
+<label>
+	<input type="checkbox" name="encodeBase64" [(ngModel)]="encodeBase64" />
+	Encode to Base64
+</label>
